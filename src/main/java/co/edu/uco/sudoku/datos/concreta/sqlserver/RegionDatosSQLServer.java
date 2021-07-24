@@ -74,7 +74,7 @@ public class RegionDatosSQLServer implements RegionDatos {
 			throw excepcion;
 		} catch (Exception excepcion) {
 			throw new SudokuDatosExepcion(
-					"se ha presentado problemas inesperados, consultando la informacion de la region");
+					"se ha presentado problemas inesperados, consultando la informacion de la region" + excepcion.getMessage());
 		}
 
 		return regiones;	

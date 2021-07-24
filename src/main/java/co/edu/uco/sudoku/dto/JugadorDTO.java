@@ -1,13 +1,30 @@
 package co.edu.uco.sudoku.dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import co.edu.uco.sudoku.transversal.utilitario.UtilTexto;
 
+@Entity
 public class JugadorDTO {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
+	
+	@Column
 	private String nombre;
+	
+	@Column
 	private int documentoIdentificacion;
+	
+	@Column
 	private String correo;
+	
+	@Column
 	private String clave;
 
 	private JugadorDTO(int codigo, String nombre, int documentoIdentificacion, String correo, String clave) {

@@ -7,8 +7,4 @@ import co.edu.uco.sudoku.dto.NivelComplejidadDTO;
 public interface NivelComplejidadFachada {
 
 	List<NivelComplejidadDTO> consultar(NivelComplejidadDTO nivelComplejidadDTO);
-
-	void registrar(NivelComplejidadDTO nivelComplejidadDTO);
-
-	void modificar(NivelComplejidadDTO nivelComplejidadDTO);
 }

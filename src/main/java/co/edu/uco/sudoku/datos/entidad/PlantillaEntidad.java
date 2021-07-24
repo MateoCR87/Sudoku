@@ -2,6 +2,7 @@ package co.edu.uco.sudoku.datos.entidad;
 
 public class PlantillaEntidad {
 
+	
 	private int codigo;
 	private SudokuEntidad sudoku;
 	private RegionEntidad[][] regiones = new RegionEntidad[3][3];

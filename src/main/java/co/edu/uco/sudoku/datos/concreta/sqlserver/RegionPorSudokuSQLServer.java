@@ -62,7 +62,7 @@ public class RegionPorSudokuSQLServer implements RegionPorSudokuDatos {
 		boolean whereColocado = false;
 		List<Object> parametros = new ArrayList<>();
 		
-		String sentenciaSQL = "SELECT  plantilla, region FROM   REGIONESPORSUDOKU ";
+		String sentenciaSQL = "SELECT sudoku, region FROM   REGIONESPORSUDOKU ";
 
 		if(!UtilObjeto.esNulo(entidad)) {
 			
@@ -94,7 +94,7 @@ public class RegionPorSudokuSQLServer implements RegionPorSudokuDatos {
 				}
 			} catch (SQLException excepcion) {
 				throw new SudokuDatosExepcion(
-						"se ha presentado un error, tratando de recuperar los datos de la consulta las regiones por sudoku");
+						"se ha presentado un error, tratando de recuperar los datos de la consulta las regiones por sudoku" + excepcion.getMessage());
 			}
 
 		} catch (SQLException excepcion) {

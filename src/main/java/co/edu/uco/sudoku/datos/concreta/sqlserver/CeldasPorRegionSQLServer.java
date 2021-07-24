@@ -51,8 +51,7 @@ public class CeldasPorRegionSQLServer implements CeldaPorRegionDatos {
 			matrizCeldas[celdaEntidad.getPosicion().getFila() - 1][celdaEntidad.getPosicion().getColumna()- 1] = celdaEntidad;
 		}
 		return matrizCeldas;
-		
-		
+
 	}
 
 	@Override

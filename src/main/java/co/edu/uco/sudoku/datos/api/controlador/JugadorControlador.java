@@ -1,9 +1,11 @@
 package co.edu.uco.sudoku.datos.api.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +24,10 @@ import co.edu.uco.sudoku.transversal.exepcion.SudokuExepcion;
 
 @RestController
 @RequestMapping("/api/v1/jugador")
+@CrossOrigin("*")
 public class JugadorControlador {
+	
+	
 	
 	@PostMapping
 	public ResponseEntity<Respuesta<JugadorDTO>>  crear (@RequestBody JugadorDTO jugador) {
@@ -122,16 +127,40 @@ public class JugadorControlador {
 	}
 	
 	@GetMapping
-	public ResponseEntity<Respuesta<JugadorDTO>> consultar () {
+	public List<JugadorDTO> consultar () {
+		List<JugadorDTO> respuesta = new ArrayList<>();
+		
+		try {
+			JugadorFachada jugadorFachada = new  JugadorFachadaImpl();
+			respuesta = jugadorFachada.consultar(JugadorDTO.crear());
+		} catch (SudokuExepcion exception) {
+
+			exception.printStackTrace();
+		} catch(Exception exception) {
+
+			exception.printStackTrace();
+		}
+		
+		return respuesta ;
+	}
+	
+	@GetMapping("/{codigo}")
+	public ResponseEntity<Respuesta<JugadorDTO>> consultar (@PathVariable int codigo) {
 		ResponseEntity<Respuesta<JugadorDTO>> entidadRespuesta;
 		Respuesta<JugadorDTO> respuesta = new Respuesta<>();
 		
 		try {
 			JugadorFachada jugadorFachada = new  JugadorFachadaImpl();
-			List<JugadorDTO> jugadores = jugadorFachada.consultar(JugadorDTO.crear());
+			List<JugadorDTO> jugadores = jugadorFachada.consultar(JugadorDTO.crear().setCodigo(codigo));
 			respuesta.setDatos(jugadores);
 			
-			respuesta.adicionaMensage("Los jugadores se consultaron de forma exitosa" + jugadores);
+			if(respuesta.getDatos().isEmpty()) {
+				respuesta.adicionaMensage("No existe un jugador con el codigo" + codigo);
+			} else {
+				respuesta.setEstado(EstadoRespuestaEnum.Exitosa);
+			}
+			
+			respuesta.adicionaMensage("el jugador se consulto de forma exitosa");
 			respuesta.setEstado(EstadoRespuestaEnum.Exitosa);
 			
 			entidadRespuesta = new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);

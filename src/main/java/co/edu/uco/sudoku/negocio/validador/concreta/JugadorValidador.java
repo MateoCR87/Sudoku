@@ -72,10 +72,7 @@ public class JugadorValidador implements Validador<JugadorDominio> {
 	private List<Regla<JugadorDominio>> obteneReglasEliminacion() {
 
 		List<Regla<JugadorDominio>> listadoReglas = new ArrayList<>();
-		listadoReglas.add(NombreJugadorValidoRegla.obtenerInstancia());
-		listadoReglas.add(CorreoJugadorValidadorRegla.obtenerInstancia());
-		listadoReglas.add(DocumentoIdentificacionJugadorValidoRegla.obtenerInstancia());
-		listadoReglas.add(ClaveJugadorValidadorRegla.obtenerInstancia());
+		listadoReglas.add(CodigoJugadorValidoRegla.obtenerInstancia());
 		return listadoReglas;
 
 	}

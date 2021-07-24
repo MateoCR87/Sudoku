@@ -15,7 +15,7 @@ public class CeldaEntidad {
 	}
 
 	public static CeldaEntidad crear() {
-		return new CeldaEntidad(0, 0, false, null);
+		return new CeldaEntidad(0, 0, false, PosicionEntidad.crear());
 	}
 
 	public static CeldaEntidad crear(int codigo, int numero, boolean esPista, PosicionEntidad posicion) {

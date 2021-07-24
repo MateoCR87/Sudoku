@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import co.edu.uco.sudoku.datos.CeldaDatos;
+import co.edu.uco.sudoku.datos.CeldaPorRegionDatos;
 import co.edu.uco.sudoku.datos.JugadorDatos;
 import co.edu.uco.sudoku.datos.ModalidadJuegoDatos;
 import co.edu.uco.sudoku.datos.NivelComplejidadDatos;
@@ -12,8 +13,11 @@ import co.edu.uco.sudoku.datos.PartidaDatos;
 import co.edu.uco.sudoku.datos.PlantillaDatos;
 import co.edu.uco.sudoku.datos.PosicionDatos;
 import co.edu.uco.sudoku.datos.RegionDatos;
+import co.edu.uco.sudoku.datos.RegionPorPlantillaDatos;
+import co.edu.uco.sudoku.datos.RegionPorSudokuDatos;
 import co.edu.uco.sudoku.datos.SudokuDatos;
 import co.edu.uco.sudoku.datos.concreta.sqlserver.CeldaDatosSQLServer;
+import co.edu.uco.sudoku.datos.concreta.sqlserver.CeldasPorRegionSQLServer;
 import co.edu.uco.sudoku.datos.concreta.sqlserver.JugadorDatosSQLServer;
 import co.edu.uco.sudoku.datos.concreta.sqlserver.ModalidadJuegoDatosSQLServer;
 import co.edu.uco.sudoku.datos.concreta.sqlserver.NivelComplajidadDatosSQLServer;
@@ -21,6 +25,8 @@ import co.edu.uco.sudoku.datos.concreta.sqlserver.PartidaDatosSQLServer;
 import co.edu.uco.sudoku.datos.concreta.sqlserver.PlantillaDatosSQLServer;
 import co.edu.uco.sudoku.datos.concreta.sqlserver.PosicionDatosSQLServer;
 import co.edu.uco.sudoku.datos.concreta.sqlserver.RegionDatosSQLServer;
+import co.edu.uco.sudoku.datos.concreta.sqlserver.RegionPorPlantillaSQLServer;
+import co.edu.uco.sudoku.datos.concreta.sqlserver.RegionPorSudokuSQLServer;
 import co.edu.uco.sudoku.datos.concreta.sqlserver.SudokuDatosSQLServer;
 import co.edu.uco.sudoku.datos.factoria.SudokuDatosFactoria;
 import co.edu.uco.sudoku.transversal.exepcion.SudokuDatosExepcion;
@@ -162,6 +168,21 @@ public class SudokuDatosSQLServerFactoria extends SudokuDatosFactoria {
 	@Override
 	public SudokuDatos obtenerSudokuDatos() {
 		return new SudokuDatosSQLServer(conexion);
+	}
+
+	@Override
+	public CeldaPorRegionDatos obtenerCeldaPorRegionDatos() {
+		return new CeldasPorRegionSQLServer(conexion);
+	}
+
+	@Override
+	public RegionPorPlantillaDatos obtenerRegionPorPlantillaDatos() {
+		return new RegionPorPlantillaSQLServer(conexion);
+	}
+
+	@Override
+	public RegionPorSudokuDatos obtenerRegionPorSudokuDatos() {
+		return new RegionPorSudokuSQLServer(conexion);
 	}
 
 }

@@ -109,7 +109,6 @@ public class JugadorDatosSQLServer implements JugadorDatos {
 			jugadorTemporal.setNombre(registro.getString("nombre"));
 			jugadorTemporal.setDocumentoIdentificacion(registro.getInt("documentoIdentificacion"));
 			jugadorTemporal.setCorreo(registro.getString("correo"));
-			//jugadorTemporal.setClave(registro.getString("clave"));
 			return jugadorTemporal;
 		} catch (SQLException excepcion) {
 			throw new SudokuDatosExepcion("se ha presentado un problema tratando de recuperar los datos de un jugador");
@@ -125,7 +124,7 @@ public class JugadorDatosSQLServer implements JugadorDatos {
 			sentenciaPreparada.setString(1, objeto.getNombre());
 			sentenciaPreparada.setInt(2, objeto.getDocumentoIdentificacion());
 			sentenciaPreparada.setString(3, objeto.getCorreo());
-			///sentenciaPreparada.setString(4, objeto.getClave());
+			sentenciaPreparada.setString(4, objeto.getClave());
 
 			sentenciaPreparada.executeUpdate();
 
@@ -174,7 +173,7 @@ public class JugadorDatosSQLServer implements JugadorDatos {
 
 		} catch (SQLException exepcion) {
 			throw new SudokuDatosExepcion(
-					"se ha presentado un problema, tartando de eliminar la informacion del jugador");
+					"se ha presentado un problema, tartando de eliminar la informacion del jugador" + exepcion.getMessage());
 		} catch (Exception exepcion) {
 			throw new SudokuDatosExepcion(
 					"se ha presentado un problema inesperado, tartando de eliminar la informacion del jugador");

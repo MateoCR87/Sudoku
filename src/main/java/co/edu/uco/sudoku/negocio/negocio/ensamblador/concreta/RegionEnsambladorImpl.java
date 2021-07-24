@@ -92,8 +92,8 @@ public class RegionEnsambladorImpl implements RegionEnsamblador {
 
 		RegionDominio[][] regiones = new RegionDominio[3][3];
 
-		for (int fila = 0; fila <= 2; fila++) {
-			for (int columna = 0; columna <= 2; columna++) {
+		for (int fila = 0; fila < 3; fila++) {
+			for (int columna = 0; columna <3 ; columna++) {
 				regiones[fila][columna] = ensamblarDominioDesdeEntidad(matrizRegiones[fila][columna]).get();
 			}
 		}

@@ -1,6 +1,7 @@
 package co.edu.uco.sudoku.datos.factoria;
 
 import co.edu.uco.sudoku.datos.CeldaDatos;
+import co.edu.uco.sudoku.datos.CeldaPorRegionDatos;
 import co.edu.uco.sudoku.datos.JugadorDatos;
 import co.edu.uco.sudoku.datos.ModalidadJuegoDatos;
 import co.edu.uco.sudoku.datos.NivelComplejidadDatos;
@@ -8,6 +9,8 @@ import co.edu.uco.sudoku.datos.PartidaDatos;
 import co.edu.uco.sudoku.datos.PlantillaDatos;
 import co.edu.uco.sudoku.datos.PosicionDatos;
 import co.edu.uco.sudoku.datos.RegionDatos;
+import co.edu.uco.sudoku.datos.RegionPorPlantillaDatos;
+import co.edu.uco.sudoku.datos.RegionPorSudokuDatos;
 import co.edu.uco.sudoku.datos.SudokuDatos;
 import co.edu.uco.sudoku.datos.factoria.concreta.archivo.SudokuDatosArchivoFactoria;
 import co.edu.uco.sudoku.datos.factoria.concreta.memoria.SudokuDatosMemoriaFactoria;
@@ -75,5 +78,11 @@ public abstract class SudokuDatosFactoria {
 	public abstract RegionDatos obtenerRegionDatos();
 
 	public abstract SudokuDatos obtenerSudokuDatos();
+	
+	public abstract CeldaPorRegionDatos obtenerCeldaPorRegionDatos();
+	
+	public abstract RegionPorPlantillaDatos obtenerRegionPorPlantillaDatos();
+	
+	public abstract RegionPorSudokuDatos obtenerRegionPorSudokuDatos();
 
 }
